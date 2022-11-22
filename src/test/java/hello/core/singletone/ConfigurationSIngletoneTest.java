@@ -31,4 +31,12 @@ public class ConfigurationSIngletoneTest {
         assertThat(memberRepository).isSameAs(memberRepository2);
 
     }
+
+    @Test
+    void configurationDeep() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfigure.class);
+        AppConfigure bean = ac.getBean(AppConfigure.class);
+
+        System.out.println("bean = " + bean.getClass());
+    }
 }
