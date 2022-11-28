@@ -1,10 +1,16 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
 
     //생성자 주입
+    //자동 의존관계 주입
+    @Autowired // ac.getBean(MemberRepository.claa) 같이 동작
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
