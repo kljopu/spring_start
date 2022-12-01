@@ -3,23 +3,18 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     // final을 통해 실수로 생성자에서 누락되는 주입을 피할 수 있다.
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
-
-    // 생성자가 하나일 경우에는 AutoWired 데코레이터를 사용하지 않아도 자동으로 등록된다
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
-
-
+    
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
