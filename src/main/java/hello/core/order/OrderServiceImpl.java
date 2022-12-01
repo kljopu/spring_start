@@ -3,11 +3,13 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderServiceImpl implements OrderService {
 
+    // final을 통해 실수로 생성자에서 누락되는 주입을 피할 수 있다.
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
